@@ -1,0 +1,21 @@
+os: linux
+
+services:
+- docker
+
+sudo: required
+
+language: python
+
+notifications:
+  email:
+    recipients:
+    - estermann.michel@gmail.com
+    on_success: change
+    on_failure: always
+
+install:
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+
+script:
+  - python rebuild_and_upload.py 
